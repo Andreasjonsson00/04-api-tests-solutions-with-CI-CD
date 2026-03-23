@@ -12,7 +12,21 @@ describe("app-model", () => {
     expect(model.posts).toEqual([]);
   });
 
-  test("reset clears all state", () => {
+  test("tags starts as an empty array", () => {
+    expect(model.tags).toEqual([]);
+  });
+
+  test("selectedTag starts as null", () => {
+    expect(model.selectedTag).toBeNull();
+  });
+
+  test("Can set and get posts", () => {
+    let posts = [{id: 1, title: "Hello World", body: "This is a post."}];
+    model.posts = posts;
+    expect(model.posts).toEqual(posts);
+  });
+
+  test("reset() clears all state (posts, tags, selectedTag)", () => {
     model.posts = [{ id: 1, title: "Hej" }];
     model.selectedTag = "history";
     model.reset();
